@@ -1,0 +1,270 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Berk\\source\\repos\\playerService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\service\\transfermarktservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\service\\transfermarktservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\controllers\\transfermarktcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\controllers\\transfermarktcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\model\\guess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\model\\guess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\service\\contracts\\iplayerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\service\\contracts\\iplayerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\service\\playerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\service\\playerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\dtos\\player\\playerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\dtos\\player\\playerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\dtos\\player\\summaryplayerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\dtos\\player\\summaryplayerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\service\\contracts\\itransfermarktservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\service\\contracts\\itransfermarktservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\playerservice.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\playerservice.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\mapper\\datetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\mapper\\datetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\playerservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\playerservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|c:\\users\\berk\\source\\repos\\playerservice\\playerservice\\data\\migrations\\20250322141802_initialmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C59377A-C2A3-4C6A-9CF5-08D40A051DC2}|playerService\\playerService.csproj|solutionrelative:playerservice\\data\\migrations\\20250322141802_initialmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TransferMarktService.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Service\\TransferMarktService.cs",
+              "RelativeDocumentMoniker": "playerService\\Service\\TransferMarktService.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Service\\TransferMarktService.cs",
+              "RelativeToolTip": "playerService\\Service\\TransferMarktService.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAAC8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T08:55:57.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Guess.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Model\\Guess.cs",
+              "RelativeDocumentMoniker": "playerService\\Model\\Guess.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Model\\Guess.cs",
+              "RelativeToolTip": "playerService\\Model\\Guess.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T08:41:41.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SummaryPlayerDto.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Dtos\\Player\\SummaryPlayerDto.cs",
+              "RelativeDocumentMoniker": "playerService\\Dtos\\Player\\SummaryPlayerDto.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Dtos\\Player\\SummaryPlayerDto.cs",
+              "RelativeToolTip": "playerService\\Dtos\\Player\\SummaryPlayerDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T17:59:20.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlayerDto.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Dtos\\Player\\PlayerDto.cs",
+              "RelativeDocumentMoniker": "playerService\\Dtos\\Player\\PlayerDto.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Dtos\\Player\\PlayerDto.cs",
+              "RelativeToolTip": "playerService\\Dtos\\Player\\PlayerDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T17:59:04.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Mapping\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "playerService\\Mapping\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Mapping\\MappingProfile.cs",
+              "RelativeToolTip": "playerService\\Mapping\\MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T17:45:13.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TransferMarktController.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Controllers\\TransferMarktController.cs",
+              "RelativeDocumentMoniker": "playerService\\Controllers\\TransferMarktController.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Controllers\\TransferMarktController.cs",
+              "RelativeToolTip": "playerService\\Controllers\\TransferMarktController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAD4vyQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T13:53:33.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Program.cs",
+              "RelativeDocumentMoniker": "playerService\\Program.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Program.cs",
+              "RelativeToolTip": "playerService\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T12:11:03.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayerService.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Service\\PlayerService.cs",
+              "RelativeDocumentMoniker": "playerService\\Service\\PlayerService.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Service\\PlayerService.cs",
+              "RelativeToolTip": "playerService\\Service\\PlayerService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAswBkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:26:52.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IPlayerService.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Service\\Contracts\\IPlayerService.cs",
+              "RelativeDocumentMoniker": "playerService\\Service\\Contracts\\IPlayerService.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Service\\Contracts\\IPlayerService.cs",
+              "RelativeToolTip": "playerService\\Service\\Contracts\\IPlayerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:26:29.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ITransferMarktService.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Service\\Contracts\\ITransferMarktService.cs",
+              "RelativeDocumentMoniker": "playerService\\Service\\Contracts\\ITransferMarktService.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Service\\Contracts\\ITransferMarktService.cs",
+              "RelativeToolTip": "playerService\\Service\\Contracts\\ITransferMarktService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:20:52.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "playerService.http",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\playerService.http",
+              "RelativeDocumentMoniker": "playerService\\playerService.http",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\playerService.http",
+              "RelativeToolTip": "playerService\\playerService.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-04-07T19:34:47.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DateTimeConverter.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Mapper\\DateTimeConverter.cs",
+              "RelativeDocumentMoniker": "playerService\\Mapper\\DateTimeConverter.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Mapper\\DateTimeConverter.cs",
+              "RelativeToolTip": "playerService\\Mapper\\DateTimeConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T13:19:36.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20250322141802_InitialMigration.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Data\\Migrations\\20250322141802_InitialMigration.cs",
+              "RelativeDocumentMoniker": "playerService\\Data\\Migrations\\20250322141802_InitialMigration.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Data\\Migrations\\20250322141802_InitialMigration.cs",
+              "RelativeToolTip": "playerService\\Data\\Migrations\\20250322141802_InitialMigration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:18:03.095Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "playerService.csproj",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\playerService.csproj",
+              "RelativeDocumentMoniker": "playerService\\playerService.csproj",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\playerService.csproj",
+              "RelativeToolTip": "playerService\\playerService.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-22T14:01:27.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "playerService\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\Berk\\source\\repos\\playerService\\playerService\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "playerService\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T12:13:49.896Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
