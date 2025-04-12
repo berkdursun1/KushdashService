@@ -13,5 +13,6 @@ namespace playerService.Model
         public int Age { get; set; }
         public List<string> Nationality { get; set; }
         public string? Foot { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

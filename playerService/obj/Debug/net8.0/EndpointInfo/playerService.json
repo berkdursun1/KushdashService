@@ -89,55 +89,6 @@
           }
         }
       }
-    },
-    "/WeatherForecast/Get/WeatherForecast/{id}": {
-      "get": {
-        "tags": [
-          "WeatherForecast"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
@@ -145,21 +96,11 @@
       "Guess": {
         "type": "object",
         "properties": {
-          "position": {
-            "type": "boolean"
+          "guessed": {
+            "$ref": "#/components/schemas/GuessedResult"
           },
-          "age": {
-            "$ref": "#/components/schemas/Guess_Number"
-          },
-          "foot": {
-            "type": "boolean"
-          },
-          "nationality": {
-            "type": "boolean"
-          },
-          "imageUrl": {
-            "type": "string",
-            "nullable": true
+          "guessedPlayer": {
+            "$ref": "#/components/schemas/GuessedPlayer"
           }
         },
         "additionalProperties": false
@@ -173,6 +114,59 @@
         "type": "integer",
         "format": "int32"
       },
+      "GuessedPlayer": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "position": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nationality": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "foot": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GuessedResult": {
+        "type": "object",
+        "properties": {
+          "position": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "age": {
+            "$ref": "#/components/schemas/Guess_Number"
+          },
+          "foot": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "nationality": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "SummaryPlayerDto": {
         "type": "object",
         "properties": {
@@ -181,29 +175,6 @@
             "format": "int32"
           },
           "name": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "WeatherForecast": {
-        "type": "object",
-        "properties": {
-          "date": {
-            "type": "string",
-            "format": "date"
-          },
-          "temperatureC": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "temperatureF": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "summary": {
             "type": "string",
             "nullable": true
           }

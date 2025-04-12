@@ -8,6 +8,6 @@ namespace playerService.Service.Contracts
 
         public Task<Guess> GuessPlayer(int playerId, int index);
 
-
+        public Task<string> GetImageUrl(int id);
     }
 }

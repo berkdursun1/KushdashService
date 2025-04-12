@@ -10,6 +10,7 @@ namespace playerService.Mapping
         {
             CreateMap<Player, SummaryPlayerDto>();
             CreateMap<PlayerDto, Player>();
+            CreateMap<Player,GuessedPlayer>();
         }
     }
 }

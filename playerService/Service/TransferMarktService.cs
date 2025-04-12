@@ -31,18 +31,16 @@ namespace playerService.Service
                 try
                 {
                     playerList = JsonConvert.DeserializeObject<List<Player>>(players["players"].ToString());
-                    
+
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine($"Error deserializing JSON: {e.Message}");
                     throw;
-                }    
+                }
             }
-            _playerService.AddPlayers(playerList);
             return playerList;
         }
-
         public async Task<Guess> GuessPlayer(int playerId, int index)
         {
             HttpResponseMessage response = await _httpClient.GetAsync($"players/{playerId}/profile");
@@ -55,15 +53,24 @@ namespace playerService.Service
             }
             return new Guess
             {
-                Age = guessPlayerFromUser.Age == targetPlayer.Age ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Age < targetPlayer.Age ? Constants.Helper.Guess_Number.UP : Constants.Helper.Guess_Number.DOWN,
-                Foot = guessPlayerFromUser.Foot == targetPlayer.Foot,
-                Nationality = guessPlayerFromUser.Nationality.Intersect(targetPlayer.Nationality).Any(),
-                Position = guessPlayerFromUser.Position == targetPlayer.Position,
-                imageUrl = jsonString["imageUrl"].ToString()
+                Guessed = new GuessedResult
+                {
+                    Age = guessPlayerFromUser.Age == targetPlayer.Age ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Age < targetPlayer.Age ? Constants.Helper.Guess_Number.UP : Constants.Helper.Guess_Number.DOWN,
+                    Foot = guessPlayerFromUser.Foot == targetPlayer.Foot ,
+                    Nationality = guessPlayerFromUser.Nationality.Intersect(targetPlayer.Nationality).Any(),
+                    Position = guessPlayerFromUser.Position == targetPlayer.Position ,
+                },
+                guessedPlayer = _mapper.Map<GuessedPlayer>(guessPlayerFromUser)
+
             };
 
         }
 
-        
+        public async Task<string> GetImageUrl(int playerId)
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync($"players/{playerId}/profile");
+            var jsonString = JObject.Parse(await response.Content.ReadAsStringAsync());
+            return jsonString["imageUrl"]?.ToString() ?? string.Empty;
+        }
     }
 }

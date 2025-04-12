@@ -22,16 +22,9 @@ namespace playerService.Controllers
         }
 
         [HttpGet("GetAllPlayers")]
-        public async Task<IEnumerable<SummaryPlayerDto>> GetAllPlayers() 
+        public IEnumerable<SummaryPlayerDto> GetAllPlayers() 
         {
             List<SummaryPlayerDto> players = _mapper.Map<List<SummaryPlayerDto>>(_playerService.GetPlayers());
-            if(players.Count == 0) 
-            {
-                for (int i = 2024; i <= 2025; i++)
-                {
-                    players = players.Concat(_mapper.Map < List < SummaryPlayerDto >> (await _transferMarktService.GetPlayers(i))).ToList();
-                }
-            }
             return players;
         }
         [HttpGet("Guess")]

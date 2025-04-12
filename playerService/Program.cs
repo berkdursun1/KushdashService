@@ -26,6 +26,15 @@ builder.Services.AddHttpClient<ITransferMarktService, TransferMarktService>(clie
 builder.Services.AddTransient<IPlayerService, PlayerService>();
 var app = builder.Build();
 
+using(var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<PlayerContext>();
+    var initializer = new DbInitializer(scope.ServiceProvider.GetRequiredService<ITransferMarktService>());
+    await initializer.InitializeAsync(dbContext);
+}
+
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

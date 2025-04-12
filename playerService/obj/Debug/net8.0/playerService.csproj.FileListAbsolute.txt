@@ -28,7 +28,6 @@ C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\staticwe
 C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.playerService.props
 C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.playerService.props
 C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\playerSe.0894C688.Up2Date
 C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\playerService.dll
 C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\refint\playerService.dll
@@ -138,3 +137,5 @@ C:\Users\Berk\source\repos\playerService\playerService\bin\Debug\net8.0\zh-Hans\
 C:\Users\Berk\source\repos\playerService\playerService\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Berk\source\repos\playerService\playerService\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Berk\source\repos\playerService\playerService\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\playerService.sourcelink.json
+C:\Users\Berk\source\repos\playerService\playerService\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
