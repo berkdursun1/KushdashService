@@ -43,8 +43,6 @@ namespace playerService.Service
         }
         public async Task<Guess> GuessPlayer(int playerId, int index)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"players/{playerId}/profile");
-            var jsonString = JObject.Parse(await response.Content.ReadAsStringAsync());
             Player? guessPlayerFromUser = _playerService.GetPlayerByPlayerId(playerId);
             Player? targetPlayer = _playerService.GetPlayerByIndex(index);
             if(guessPlayerFromUser == null || targetPlayer == null) 
@@ -55,7 +53,7 @@ namespace playerService.Service
             {
                 Guessed = new GuessedResult
                 {
-                    Age = guessPlayerFromUser.Age == targetPlayer.Age ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Age < targetPlayer.Age ? Constants.Helper.Guess_Number.UP : Constants.Helper.Guess_Number.DOWN,
+                    Age = guessPlayerFromUser.Age == targetPlayer.Age ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Age < targetPlayer.Age ? Constants.Helper.Guess_Number.DOWN : Constants.Helper.Guess_Number.UP,
                     Foot = guessPlayerFromUser.Foot == targetPlayer.Foot ,
                     Nationality = guessPlayerFromUser.Nationality.Intersect(targetPlayer.Nationality).Any(),
                     Position = guessPlayerFromUser.Position == targetPlayer.Position ,
