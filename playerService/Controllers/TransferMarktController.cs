@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using playerService.Constants;
 using playerService.Dtos.Player;
 using playerService.Model;
 using playerService.Service.Contracts;
+
 
 namespace playerService.Controllers
 {
@@ -25,6 +27,7 @@ namespace playerService.Controllers
         public IEnumerable<SummaryPlayerDto> GetAllPlayers() 
         {
             List<SummaryPlayerDto> players = _mapper.Map<List<SummaryPlayerDto>>(_playerService.GetPlayers());
+            Helper.Helper.Shuffle(players);
             return players;
         }
         [HttpGet("Guess")]

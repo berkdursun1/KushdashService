@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using playerService.Infrastructure;
@@ -12,9 +13,11 @@ using playerService.Infrastructure;
 namespace playerService.Data.Migrations
 {
     [DbContext(typeof(PlayerContext))]
-    partial class PlayerContextModelSnapshot : ModelSnapshot
+    [Migration("20250412160541_StatFields")]
+    partial class StatFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +62,7 @@ namespace playerService.Data.Migrations
                     b.Property<string>("Position")
                         .HasColumnType("text");
 
-                    b.Property<int>("Scores")
+                    b.Property<int>("Score")
                         .HasColumnType("integer");
 
                     b.Property<string>("SurName")

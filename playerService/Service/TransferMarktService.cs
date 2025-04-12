@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Text.Json;
+using AutoMapper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using playerService.Dtos.Player;
@@ -49,6 +50,18 @@ namespace playerService.Service
             {
                 // Handle if the null case
             }
+            List<string> matchedTeams = new List<string>();
+            guessPlayerFromUser.Teams.ForEach(item =>
+            {
+                if(item == "Fenerbahce")
+                {
+                    // Do not add
+                }
+                else
+                {
+                    matchedTeams.Add(targetPlayer.Teams.Contains(item) ? item : "?");
+                }
+            });
             return new Guess
             {
                 Guessed = new GuessedResult
@@ -57,6 +70,10 @@ namespace playerService.Service
                     Foot = guessPlayerFromUser.Foot == targetPlayer.Foot ,
                     Nationality = guessPlayerFromUser.Nationality.Intersect(targetPlayer.Nationality).Any(),
                     Position = guessPlayerFromUser.Position == targetPlayer.Position ,
+                    Teams = matchedTeams,
+                    Matchs = guessPlayerFromUser.Matchs == targetPlayer.Matchs ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Matchs < targetPlayer.Matchs ? Constants.Helper.Guess_Number.DOWN : Constants.Helper.Guess_Number.UP,
+                    Scores = guessPlayerFromUser.Scores == targetPlayer.Scores ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Scores < targetPlayer.Scores ? Constants.Helper.Guess_Number.DOWN : Constants.Helper.Guess_Number.UP,
+                    Asists = guessPlayerFromUser.Asists == targetPlayer.Asists ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Asists < targetPlayer.Asists ? Constants.Helper.Guess_Number.DOWN : Constants.Helper.Guess_Number.UP,
                 },
                 guessedPlayer = _mapper.Map<GuessedPlayer>(guessPlayerFromUser)
 
@@ -69,6 +86,57 @@ namespace playerService.Service
             HttpResponseMessage response = await _httpClient.GetAsync($"players/{playerId}/profile");
             var jsonString = JObject.Parse(await response.Content.ReadAsStringAsync());
             return jsonString["imageUrl"]?.ToString() ?? string.Empty;
+        }
+
+        public async Task<IEnumerable<string>> GetTeamsOfPlayer(int id)
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync($"players/{id}/transfers");
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var jsonString = JObject.Parse(await response.Content.ReadAsStringAsync());
+                JObject doc = JObject.Parse(jsonString.ToString());
+                var transfers = doc["transfers"];
+                List<string> clubs = new List<string>();
+                foreach (var transfer in transfers)
+                {
+                    var clubFrom = transfer["clubFrom"]["name"].ToString();
+                    var clubTo = transfer["clubTo"]["name"].ToString();
+                    if (!clubs.Contains(clubFrom)) { clubs.Add(clubFrom); }
+                    if (!clubs.Contains(clubTo)) { clubs.Add(clubTo); }
+                }
+                return clubs;
+            }
+            else
+            {
+                return Enumerable.Empty<string>();
+            }
+            
+        }
+
+        public async Task<Stats> GetStats(int id, int clubId)
+        {
+            Stats stat = new Stats { Match = 0, Score = 0, Asist = 0 };
+            HttpResponseMessage response = await _httpClient.GetAsync($"players/{id}/stats");
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                return stat;
+            }
+            else
+            {
+                var jsonString = JObject.Parse(await response.Content.ReadAsStringAsync());
+                JObject doc = JObject.Parse(jsonString.ToString());
+                var stats = doc["stats"].ToList();
+                stats.ForEach(item => 
+                {
+                    if (Int32.Parse(item["clubId"].ToString()) == clubId)
+                    {
+                        stat.Match += item.Contains("appearances") ? Int32.Parse(item["appearances"].ToString()) : 0;
+                        stat.Score += item.Contains("goals") ? Int32.Parse(item["goals"].ToString()) : 0;
+                        stat.Asist += item.Contains("assists") ? Int32.Parse(item["assists"].ToString()): 0;
+                    }
+                });
+            }
+            return stat;
         }
     }
 }

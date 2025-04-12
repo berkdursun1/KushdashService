@@ -8,5 +8,9 @@ namespace playerService.Model
         public Guess_Number Age { get; set; }
         public bool? Foot { get; set; }
         public bool Nationality { get; set; }
+        public List<string> Teams { get; set; }
+        public Guess_Number Scores { get; set; }
+        public Guess_Number Asists { get; set; }
+        public Guess_Number Matchs { get; set; }
     }
 }

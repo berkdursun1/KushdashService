@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using playerService.Infrastructure;
@@ -12,9 +13,11 @@ using playerService.Infrastructure;
 namespace playerService.Data.Migrations
 {
     [DbContext(typeof(PlayerContext))]
-    partial class PlayerContextModelSnapshot : ModelSnapshot
+    [Migration("20250412121915_newFieldTable")]
+    partial class newFieldTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,9 +37,6 @@ namespace playerService.Data.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Asists")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("timestamp without time zone");
 
@@ -45,9 +45,6 @@ namespace playerService.Data.Migrations
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
-
-                    b.Property<int>("Matchs")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -58,9 +55,6 @@ namespace playerService.Data.Migrations
 
                     b.Property<string>("Position")
                         .HasColumnType("text");
-
-                    b.Property<int>("Scores")
-                        .HasColumnType("integer");
 
                     b.Property<string>("SurName")
                         .HasColumnType("text");
