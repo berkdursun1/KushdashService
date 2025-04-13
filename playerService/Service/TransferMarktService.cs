@@ -130,9 +130,9 @@ namespace playerService.Service
                 {
                     if (Int32.Parse(item["clubId"].ToString()) == clubId)
                     {
-                        stat.Match += item.Contains("appearances") ? Int32.Parse(item["appearances"].ToString()) : 0;
-                        stat.Score += item.Contains("goals") ? Int32.Parse(item["goals"].ToString()) : 0;
-                        stat.Asist += item.Contains("assists") ? Int32.Parse(item["assists"].ToString()): 0;
+                        stat.Match += item["appearances"] != null ? Int32.Parse(item["appearances"].ToString()) : 0;
+                        stat.Score += item["goals"] != null ? Int32.Parse(item["goals"].ToString()) : 0;
+                        stat.Asist += item["assists"] != null ? Int32.Parse(item["assists"].ToString()): 0;
                     }
                 });
             }
