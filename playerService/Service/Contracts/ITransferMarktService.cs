@@ -11,7 +11,7 @@ namespace playerService.Service.Contracts
         public Task<Stats> GetStats(int id, int clubId);
 
         public Task<Guess> GuessPlayer(int playerId, int index);
-
+        public GuessedResult InitialGuessPlayer(int index);
         public Task<string> GetImageUrl(int id);
     }
 }

@@ -3,20 +3,41 @@ using System.ComponentModel.DataAnnotations;
 
 namespace playerService.Model
 {
+    [Table("players")]
     public class Player
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Column(TypeName = "varchar(255)")]
         public string? Name { get; set; }
-        public string? SurName { get; set; }
+
+        [Column(TypeName = "varchar(255)")]
         public string? Position { get; set; }
-        public DateTime DateOfBirth { get; set; }
+
+        [Column(TypeName = "integer")]
         public int Age { get; set; }
-        public List<string> Nationality { get; set; }
+
+        [Column(TypeName = "text[]")]
+        public List<string> Nationality { get; set; } = new List<string>();
+
+        [Column(TypeName = "varchar(255)")]
         public string? Foot { get; set; }
+
+        [Column(TypeName = "varchar(255)")]
         public string? ImageUrl { get; set; }
-        public List<string> Teams { get; set; }
-        public int Scores { get; set; }
-        public int Asists { get; set; }
-        public int Matchs { get; set; }
+
+        [Column(TypeName = "text[]")]
+        public List<string> Teams { get; set; } = new List<string>();
+
+        [Column(TypeName = "integer")]
+        public int? Scores { get; set; }
+
+        [Column(TypeName = "integer")]
+        public int? Asists { get; set; }
+
+        [Column(TypeName = "integer")]
+        public int? Matchs { get; set; }
     }
 }

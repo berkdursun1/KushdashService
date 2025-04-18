@@ -138,5 +138,21 @@ namespace playerService.Service
             }
             return stat;
         }
+
+        public GuessedResult InitialGuessPlayer(int index)
+        {
+            Player real = _playerService.GetPlayerByIndex(index);
+            return new GuessedResult
+            {
+                Age = null,
+                Foot = null,
+                Nationality = null,
+                Position = null,
+                Teams = Enumerable.Repeat("?", real.Teams.Count-1).ToList(),
+                Matchs = null,
+                Scores = null,
+                Asists = null,
+            };
+        }
     }
 }

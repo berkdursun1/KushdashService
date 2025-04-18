@@ -35,5 +35,10 @@ namespace playerService.Controllers
         {
             return await _transferMarktService.GuessPlayer(playerId, index);
         }
+        [HttpGet("InitialGuess")]
+        public async Task<GuessedResult> InitialGuess(int index)
+        {
+            return _transferMarktService.InitialGuessPlayer(index);
+        }
     }
 }
