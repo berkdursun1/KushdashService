@@ -40,5 +40,11 @@ namespace playerService.Controllers
         {
             return _transferMarktService.InitialGuessPlayer(index, TeamCodes[team]);
         }
+        [HttpGet("RealPlayer")]
+        public async Task<Player> RealPlayer(int index, int team)
+        {
+            Player? player = _playerService.GetPlayerByIndex(index, TeamCodes[team]);
+            return _playerService.GetPlayerByIndex(index, TeamCodes[team]) ?? new Player();
+        }
     }
 }

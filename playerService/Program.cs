@@ -12,7 +12,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://kushdash.net").AllowAnyHeader().AllowAnyHeader();
+                          policy.WithOrigins("http://kushdash.net",
+                              "https://kushdash.net").AllowAnyHeader().AllowAnyHeader();
                       });
 });
 // Add services to the container.
