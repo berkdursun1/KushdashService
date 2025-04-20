@@ -2,6 +2,7 @@
 using playerService.Infrastructure;
 using playerService.Model;
 using playerService.Service.Contracts;
+using static playerService.Constants.Helper;
 
 namespace playerService.Service
 {
@@ -18,9 +19,9 @@ namespace playerService.Service
             _context.players.Add(player);
         }
 
-        public IEnumerable<Player> GetPlayers()
+        public IEnumerable<Player> GetPlayers(string team)
         {
-            return _context.players;
+            return _context.players.Where(x => x.Teams.Contains(team));
         }
 
         public void AddPlayers(IEnumerable<Player> players)
@@ -34,9 +35,9 @@ namespace playerService.Service
             return _context.players.Where(player => player.Id == id).FirstOrDefault();
         }
 
-        public Player? GetPlayerByIndex(int id)
+        public Player? GetPlayerByIndex(int id, string team)
         {
-            return _context.players.Skip(id-1).Take(1).FirstOrDefault();
+            return _context.players.Where(x => x.Teams.Contains(team)).Skip(id-1).Take(1).FirstOrDefault();
         }
     }
 }

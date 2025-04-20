@@ -1,5 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace playerService.Model
 {
@@ -39,5 +42,32 @@ namespace playerService.Model
 
         [Column(TypeName = "integer")]
         public int? Matchs { get; set; }
+
+        [NotMapped]
+        public string dateOfBirth { get; set; }
+
+        [OnDeserialized]
+        internal void OnDeserializedMethod(StreamingContext context)
+        {
+            var jsonObject = JObject.Parse(JsonConvert.SerializeObject(this));
+            string dateOfBirth = "";
+            if (jsonObject.ContainsKey("dateOfBirth"))
+            {
+                dateOfBirth = jsonObject["dateOfBirth"].ToString();
+            }
+            if(!dateOfBirth.Equals(""))
+            {
+                DateTime birthDate = DateTime.Parse(dateOfBirth);
+                Age = DateTime.Now.Year - birthDate.Year;
+
+                // Eğer doğum günü henüz gelmediyse yaşı bir azalt
+                if (DateTime.Now.Month < birthDate.Month ||
+                    (DateTime.Now.Month == birthDate.Month && DateTime.Now.Day < birthDate.Day))
+                {
+                    Age--;
+                }
+            }
+            
+        }
     }
 }

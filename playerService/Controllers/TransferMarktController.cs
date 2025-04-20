@@ -5,7 +5,7 @@ using playerService.Constants;
 using playerService.Dtos.Player;
 using playerService.Model;
 using playerService.Service.Contracts;
-
+using static playerService.Constants.Helper;
 
 namespace playerService.Controllers
 {
@@ -24,21 +24,21 @@ namespace playerService.Controllers
         }
 
         [HttpGet("GetAllPlayers")]
-        public IEnumerable<SummaryPlayerDto> GetAllPlayers() 
+        public IEnumerable<SummaryPlayerDto> GetAllPlayers(int team) 
         {
-            List<SummaryPlayerDto> players = _mapper.Map<List<SummaryPlayerDto>>(_playerService.GetPlayers());
+            List<SummaryPlayerDto> players = _mapper.Map<List<SummaryPlayerDto>>(_playerService.GetPlayers(TeamCodes[team]));
             Helper.Helper.Shuffle(players);
             return players;
         }
         [HttpGet("Guess")]
-        public async Task<Guess> Guess(int playerId, int index)
+        public async Task<Guess> Guess(int playerId, int index, int team)
         {
-            return await _transferMarktService.GuessPlayer(playerId, index);
+            return await _transferMarktService.GuessPlayer(playerId, index, TeamCodes[team]);
         }
         [HttpGet("InitialGuess")]
-        public async Task<GuessedResult> InitialGuess(int index)
+        public async Task<GuessedResult> InitialGuess(int index, int team)
         {
-            return _transferMarktService.InitialGuessPlayer(index);
+            return _transferMarktService.InitialGuessPlayer(index, TeamCodes[team]);
         }
     }
 }

@@ -1,11 +1,20 @@
 using Microsoft.EntityFrameworkCore;
+using playerService.Helper;
 using playerService.Infrastructure;
 using playerService.Mapping;
 using playerService.Service;
 using playerService.Service.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://kushdash.net").AllowAnyHeader().AllowAnyHeader();
+                      });
+});
 // Add services to the container.
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -41,7 +50,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

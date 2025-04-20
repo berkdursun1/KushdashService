@@ -10,8 +10,8 @@ namespace playerService.Service.Contracts
 
         public Task<Stats> GetStats(int id, int clubId);
 
-        public Task<Guess> GuessPlayer(int playerId, int index);
-        public GuessedResult InitialGuessPlayer(int index);
+        public Task<Guess> GuessPlayer(int playerId, int index, string team);
+        public GuessedResult InitialGuessPlayer(int index, string team);
         public Task<string> GetImageUrl(int id);
     }
 }

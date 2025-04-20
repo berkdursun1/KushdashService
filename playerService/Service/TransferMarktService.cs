@@ -6,6 +6,7 @@ using playerService.Dtos.Player;
 using playerService.Infrastructure;
 using playerService.Model;
 using playerService.Service.Contracts;
+using static playerService.Constants.Helper;
 
 namespace playerService.Service
 {
@@ -23,7 +24,7 @@ namespace playerService.Service
         }
         public async Task<IEnumerable<Player?>> GetPlayers(int season_id)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"clubs/36/players?season_id={season_id}");
+            HttpResponseMessage response = await _httpClient.GetAsync($"clubs/{FENER_ID}/players?season_id={season_id}");
             var jsonString = await response.Content.ReadAsStringAsync();
             var players = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonString);
             List<Player> playerList = new List<Player>();
@@ -42,10 +43,10 @@ namespace playerService.Service
             }
             return playerList;
         }
-        public async Task<Guess> GuessPlayer(int playerId, int index)
+        public async Task<Guess> GuessPlayer(int playerId, int index, string team)
         {
             Player? guessPlayerFromUser = _playerService.GetPlayerByPlayerId(playerId);
-            Player? targetPlayer = _playerService.GetPlayerByIndex(index);
+            Player? targetPlayer = _playerService.GetPlayerByIndex(index, team);
             if(guessPlayerFromUser == null || targetPlayer == null) 
             {
                 // Handle if the null case
@@ -53,7 +54,7 @@ namespace playerService.Service
             List<string> matchedTeams = new List<string>();
             guessPlayerFromUser.Teams.ForEach(item =>
             {
-                if(item == "Fenerbahce")
+                if(item == team)
                 {
                     // Do not add
                 }
@@ -83,9 +84,16 @@ namespace playerService.Service
 
         public async Task<string> GetImageUrl(int playerId)
         {
-            HttpResponseMessage response = await _httpClient.GetAsync($"players/{playerId}/profile");
-            var jsonString = JObject.Parse(await response.Content.ReadAsStringAsync());
-            return jsonString["imageUrl"]?.ToString() ?? string.Empty;
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync($"players/{playerId}/profile");
+                var jsonString = JObject.Parse(await response.Content.ReadAsStringAsync());
+                return jsonString["imageUrl"]?.ToString() ?? string.Empty;
+            }
+            catch (Exception e)
+            {
+                return string.Empty;
+            }
         }
 
         public async Task<IEnumerable<string>> GetTeamsOfPlayer(int id)
@@ -123,25 +131,33 @@ namespace playerService.Service
             }
             else
             {
-                var jsonString = JObject.Parse(await response.Content.ReadAsStringAsync());
-                JObject doc = JObject.Parse(jsonString.ToString());
-                var stats = doc["stats"].ToList();
-                stats.ForEach(item => 
+                try
                 {
-                    if (Int32.Parse(item["clubId"].ToString()) == clubId)
+                    var jsonString = JObject.Parse(await response.Content.ReadAsStringAsync());
+                    JObject doc = JObject.Parse(jsonString.ToString());
+                    var stats = doc["stats"].ToList();
+                    stats.ForEach(item =>
                     {
-                        stat.Match += item["appearances"] != null ? Int32.Parse(item["appearances"].ToString()) : 0;
-                        stat.Score += item["goals"] != null ? Int32.Parse(item["goals"].ToString()) : 0;
-                        stat.Asist += item["assists"] != null ? Int32.Parse(item["assists"].ToString()): 0;
-                    }
-                });
+                        if (Int32.Parse(item["clubId"].ToString()) == clubId)
+                        {
+                            stat.Match += item["appearances"] != null ? Int32.Parse(item["appearances"].ToString()) : 0;
+                            stat.Score += item["goals"] != null ? Int32.Parse(item["goals"].ToString()) : 0;
+                            stat.Asist += item["assists"] != null ? Int32.Parse(item["assists"].ToString()) : 0;
+                        }
+                    });
+                    return stat;
+                }
+                catch (Exception)
+                {
+
+                    return stat ;
+                }
             }
-            return stat;
         }
 
-        public GuessedResult InitialGuessPlayer(int index)
+        public GuessedResult InitialGuessPlayer(int index, string team)
         {
-            Player real = _playerService.GetPlayerByIndex(index);
+            Player? real = _playerService.GetPlayerByIndex(index, team);
             return new GuessedResult
             {
                 Age = null,
