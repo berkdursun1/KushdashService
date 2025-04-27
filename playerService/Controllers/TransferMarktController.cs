@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 using playerService.Constants;
 using playerService.Dtos.Player;
 using playerService.Model;
@@ -16,11 +19,14 @@ namespace playerService.Controllers
         public ITransferMarktService _transferMarktService { get; set; }
         public IPlayerService _playerService { get; set; }
         public IMapper _mapper { get; set; }
-        public TransferMarktController(ITransferMarktService transferMarktService, IPlayerService playerService, IMapper mapper)
+        public IDistributedCache _distributedCache { get; set; }
+        const String cacheKey = "PlayerList";
+        public TransferMarktController(ITransferMarktService transferMarktService, IPlayerService playerService, IMapper mapper, IDistributedCache distributedCache)
         {
             _transferMarktService = transferMarktService;
             _playerService = playerService;
             _mapper = mapper;
+            _distributedCache = distributedCache;
         }
 
         [HttpGet("GetAllPlayers")]

@@ -1,26 +1,38 @@
-﻿using System.Text.Json;
+﻿using System.Numerics;
+using System.Text;
+using System.Text.Json;
 using AutoMapper;
+using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using playerService.Dtos.Player;
 using playerService.Infrastructure;
 using playerService.Model;
 using playerService.Service.Contracts;
+using StackExchange.Redis;
 using static playerService.Constants.Helper;
 
 namespace playerService.Service
 {
+    public enum SQLTYPE
+    {
+        ID,
+        INDEX
+    }
     public class TransferMarktService : ITransferMarktService
     {
         public HttpClient _httpClient { get; set; }
         public IPlayerService _playerService { get; set; }
         public IMapper _mapper { get; set; }
+        public IDistributedCache _distributedCache { get; set; }
+        
 
-        public TransferMarktService(HttpClient httpClient, IPlayerService playerService, IMapper mapper) 
+        public TransferMarktService(HttpClient httpClient, IPlayerService playerService, IMapper mapper, IDistributedCache distributedCache) 
         {
             _httpClient = httpClient;
             _playerService = playerService;
             _mapper = mapper;
+            _distributedCache = distributedCache;
         }
         public async Task<IEnumerable<Player?>> GetPlayers(int season_id)
         {
@@ -45,9 +57,11 @@ namespace playerService.Service
         }
         public async Task<Guess> GuessPlayer(int playerId, int index, string team)
         {
-            Player? guessPlayerFromUser = _playerService.GetPlayerByPlayerId(playerId);
-            Player? targetPlayer = _playerService.GetPlayerByIndex(index, team);
-            if(guessPlayerFromUser == null || targetPlayer == null) 
+            var cacheKeyID = $"playerByID-{playerId}";
+            var cacheKeyIndex = $"playerByINDEX-{index}";
+            Player? guessPlayerFromUser = await GetPlayerByCache(cacheKeyID, playerId, team, SQLTYPE.ID);
+            Player? targetPlayer = await GetPlayerByCache(cacheKeyIndex, index, team, SQLTYPE.INDEX); ;
+            if (guessPlayerFromUser == null || targetPlayer == null) 
             {
                 // Handle if the null case
             }
@@ -63,14 +77,16 @@ namespace playerService.Service
                     matchedTeams.Add(targetPlayer.Teams.Contains(item) ? item : "?");
                 }
             });
+            
+            
             return new Guess
             {
                 Guessed = new GuessedResult
                 {
                     Age = guessPlayerFromUser.Age == targetPlayer.Age ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Age < targetPlayer.Age ? Constants.Helper.Guess_Number.DOWN : Constants.Helper.Guess_Number.UP,
-                    Foot = guessPlayerFromUser.Foot == targetPlayer.Foot ,
+                    Foot = guessPlayerFromUser.Foot == targetPlayer.Foot,
                     Nationality = guessPlayerFromUser.Nationality.Intersect(targetPlayer.Nationality).Any(),
-                    Position = guessPlayerFromUser.Position == targetPlayer.Position ,
+                    Position = guessPlayerFromUser.Position == targetPlayer.Position,
                     Teams = matchedTeams,
                     Matchs = guessPlayerFromUser.Matchs == targetPlayer.Matchs ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Matchs < targetPlayer.Matchs ? Constants.Helper.Guess_Number.DOWN : Constants.Helper.Guess_Number.UP,
                     Scores = guessPlayerFromUser.Scores == targetPlayer.Scores ? Constants.Helper.Guess_Number.EXACTLY : guessPlayerFromUser.Scores < targetPlayer.Scores ? Constants.Helper.Guess_Number.DOWN : Constants.Helper.Guess_Number.UP,
@@ -78,7 +94,33 @@ namespace playerService.Service
                 },
                 guessedPlayer = _mapper.Map<GuessedPlayer>(guessPlayerFromUser)
 
-            };
+            }; ;
+
+        }
+
+        private async Task<Player> GetPlayerByCache(string cacheKeyID, int sqlParameter, string team, SQLTYPE type)
+        {
+            try
+            {
+                Player? player;
+                string? cachedPlayer = await _distributedCache.GetStringAsync(cacheKeyID);
+                if (cachedPlayer == null)
+                {
+                    // Cache miss
+                    player = type == SQLTYPE.ID ? _playerService.GetPlayerByPlayerId(sqlParameter) : _playerService.GetPlayerByIndex(sqlParameter, team);
+                    await _distributedCache.SetStringAsync(cacheKeyID, JsonConvert.SerializeObject(player), new DistributedCacheEntryOptions { AbsoluteExpiration = DateTimeOffset.Now.AddHours(1) });
+                }
+                else
+                {
+                    player = JsonConvert.DeserializeObject<Player>(cachedPlayer);
+                }
+                return player;
+            }
+            catch (RedisConnectionException e)
+            {
+                return type == SQLTYPE.ID ? _playerService.GetPlayerByPlayerId(sqlParameter) : _playerService.GetPlayerByIndex(sqlParameter, team);
+                
+            }
 
         }
 

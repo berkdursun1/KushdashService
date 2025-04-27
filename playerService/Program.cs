@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using playerService.Helper;
 using playerService.Infrastructure;
 using playerService.Mapping;
@@ -29,6 +29,12 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 builder.Services.AddDbContext<PlayerContext>(opt =>
     opt.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = options.Configuration = "54.190.192.24:6379";
+    options.InstanceName = "MyApp_"; 
+});
+
 builder.Services.AddHttpClient<ITransferMarktService, TransferMarktService>(client =>
 {
     client.BaseAddress = new Uri("https://transfermarkt-api.fly.dev/");
