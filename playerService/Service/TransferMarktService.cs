@@ -66,9 +66,10 @@ namespace playerService.Service
                 // Handle if the null case
             }
             List<string> matchedTeams = new List<string>();
+            guessPlayerFromUser.Teams.RemoveAll(x => x.Contains(team) || x.Contains("Retired") || x.Contains("Without Club"));
             guessPlayerFromUser.Teams.ForEach(item =>
             {
-                if(item == team)
+                if(item.Contains(team))
                 {
                     // Do not add
                 }
